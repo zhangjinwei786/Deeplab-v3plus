@@ -19,11 +19,11 @@ from tensorboardX import SummaryWriter
 
 import sys
 sys.path.append(os.path.abspath('..'))
-from libs.modules.sync_batchnorm.replicate import patch_replication_callback
-from libs.utils.data_utils import calculate_weigths_labels
-from libs.utils import Eval
-from libs.models.decoder import DeepLab
-from libs.datasets import City_DataLoader
+from graphs.models.sync_batchnorm.replicate import patch_replication_callback
+from utils.data_utils import calculate_weigths_labels
+from utils import Eval
+from graphs.models.decoder import DeepLab
+from datasets import City_DataLoader
 
 def str2bool(v):
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
@@ -357,13 +357,13 @@ if __name__ == '__main__':
     arg_parser = argparse.ArgumentParser()
 
     # Path related arguments
-    arg_parser.add_argument('--data_root_path', type=str, default="/data/linhua/Cityscapes",
+    arg_parser.add_argument('--data_root_path', type=str, default="/mnt/Data/Research_Dataset/Cityscapes",
                             help="the root path of dataset")
     arg_parser.add_argument('--checkpoint_dir', default=os.path.abspath('..') + "/checkpoints/",
                             help="the path of ckpt file")
-    arg_parser.add_argument('--result_filepath', default="/data/linhua/Cityscapes/Results/",
+    arg_parser.add_argument('--result_filepath', default="/mnt/Data/Research_Dataset/Cityscapes/Results/",
                             help="the filepath where mask store")
-    arg_parser.add_argument('--loss_weights_dir', default="/data/linhua/Cityscapes/pretrained_weights/")
+    arg_parser.add_argument('--loss_weights_dir', default="/mnt/Data/Research_Dataset/Cityscapes/pretrained_weights/")
 
     # Model related arguments
     arg_parser.add_argument('--backbone', default='resnet101',
@@ -386,9 +386,9 @@ if __name__ == '__main__':
                             help="whether to val after each train epoch")
 
     # train related arguments
-    arg_parser.add_argument('--gpu', type=str, default="1,3",
+    arg_parser.add_argument('--gpu', type=str, default="0",
                             help=" the num of gpu")
-    arg_parser.add_argument('--batch_size_per_gpu', default=2, type=int,
+    arg_parser.add_argument('--batch_size_per_gpu', default=4, type=int,
                             help='input batch size')
 
     # dataset related arguments

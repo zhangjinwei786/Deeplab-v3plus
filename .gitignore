@@ -122,3 +122,8 @@ utils/bsd.py
 utils/mx2torch.py
 venv/
 __pycache__/
+datasets/__pycache__/
+graphs/models/__pycache__/
+utils/__pycache__/
+*.pyc
+*.pth
